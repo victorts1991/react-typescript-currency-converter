@@ -71,7 +71,7 @@ const ConverterForm: React.FC<ConverterFormProps> = ({
         </SwapButton>
 
         <FormField>
-          <label htmlFor="toCurrency">To test:</label>
+          <label htmlFor="toCurrency">To:</label>
           <Select 
             id="toCurrency" 
             name="toCurrency" 
