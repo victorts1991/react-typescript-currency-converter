@@ -14,7 +14,7 @@ const validationSchema = yup.object().shape({
     .test(
         'max-two-decimals', 
         'The amount can have a maximum of 2 decimal places.',
-        (value) => /^\d+(\.\d{1,2})?$/.test(String(value))
+        (value) => /^-?\d+(\.\d{1,2})?$/.test(String(value))
     )
     .typeError('The value must be a valid number.'),
   fromCurrency: yup.string().required('Select the source currency.'),
@@ -74,6 +74,7 @@ export const useCurrencyConverter = () => {
       fromCurrency: prev.toCurrency,
       toCurrency: prev.fromCurrency,
     }));
+    setConversionResult(null)
   }, []);
 
   const handleConversion = async (e: React.FormEvent) => {
