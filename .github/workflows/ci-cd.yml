@@ -40,6 +40,14 @@ jobs:
       - name: Build application
         run: npm run build
 
+      - name: Prepare Vercel Prebuilt Structure
+        run: |
+          mkdir -p .vercel/output/static
+          
+          cp -r dist/* .vercel/output/static/
+          
+          echo '{"version": 3, "routes": [{"src": "/(.*)", "dest": "/static/$1"}]}' > .vercel/output/config.json
+
       - name: Deploy to Vercel (CLI)
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
