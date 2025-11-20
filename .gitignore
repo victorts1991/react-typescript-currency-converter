@@ -1,0 +1,27 @@
+/dist
+
+/node_modules
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+.env
+.env.*
+!.env.example # Permite o versionamento de um arquivo modelo SEM os valores reais
+
+.vite
+/temp
+
+.DS_Store
+Thumbs.db
+*.log
+*.sqlite
+*.sqlite-journal
+
+.vscode
+.idea
+*.sublime-project
+*.sublime-workspace
