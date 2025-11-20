@@ -1,73 +1,52 @@
-# React + TypeScript + Vite
+# 💰 Currency Converter Challenge (React + TypeScript)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project implements a single-page currency converter, fulfilling the technical requirements of the code challenge.
 
-Currently, two official plugins are available:
+The application architecture follows the MVVM (Model-View-ViewModel) pattern to ensure separation of concerns, testability, and maintainability.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**Technologies Used:**
 
-## React Compiler
+* **Frontend:** React, TypeScript, Vite
+* **Styling:** Styled Components (custom components, no external libraries)
+* **Logic/State:** Custom Hooks (ViewModel), `date-fns`
+* **Validation:** `yup`
+* **Tests:** Vitest, React Testing Library
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+-----
 
-## Expanding the ESLint configuration
+## 🚀 Local Setup and Execution
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 1. API Token Configuration
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+The converter relies on the free Currencyapi service to fetch currency rates and available currencies. You must configure your API access token.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+1. Create a file named **.env** in the project root directory (next to `package.json`).
+2. Add the following environment variables, replacing <YOUR_API_KEY> with your actual key:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+VITE_CURRENCYAPI_KEY="<YOUR_API_KEY>"
+VITE_CURRENCYAPI_BASE_URL="https://api.currencyapi.com/v3"
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Installation and Running
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+After configuring the .env file, follow these steps to run the application locally:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+# 1. Install project dependencies
+npm install
+
+# 2. Start the development server (application will be available at http://localhost:5173)
+npm run dev
+```
+
+-----
+
+## 🧪 Automated Testing
+
+The project includes a complete suite of unit and integration tests for the business logic (ViewModel), ensuring correct calculation, state handling, and form validation.
+
+```bash
+# Executes all unit and integration tests
+npm run test
 ```
