@@ -39,7 +39,6 @@ export const useCurrencyConverter = () => {
   const [generalError, setGeneralError] = useState<string | null>(null);
   const [validationErrors, setValidationErrors] = useState<Record<string, string>>({});
 
-  // Initial load
   useEffect(() => {
     async function loadCurrencies() {
       try {
@@ -54,14 +53,12 @@ export const useCurrencyConverter = () => {
     loadCurrencies();
   }, []);
 
-  //(Connect the View to ViewModel)
   const handleChange = useCallback((name: string, value: string | number) => {
     setFormData(prev => ({
       ...prev,
       [name]: value,
     }));
-    
-    // clear validation when change the field
+    setConversionResult(null)
     if (validationErrors[name]) {
         setValidationErrors(prev => {
             const newErrors = { ...prev };
@@ -71,7 +68,6 @@ export const useCurrencyConverter = () => {
     }
   }, [validationErrors]);
 
-  
   const handleSwap = useCallback(() => {
     setFormData(prev => ({
       ...prev,
@@ -80,8 +76,8 @@ export const useCurrencyConverter = () => {
     }));
   }, []);
 
-  
-  const handleConversion = async () => {
+  const handleConversion = async (e: React.FormEvent) => {
+    e.preventDefault();
     setIsLoading(true);
     setGeneralError(null);
     setValidationErrors({});
@@ -90,18 +86,21 @@ export const useCurrencyConverter = () => {
     try {
       const validatedData = await validationSchema.validate(formData, { abortEarly: false });
       
-      const dateParam = (validatedData.date === null || validatedData.date === MAX_DATE) ? undefined : validatedData.date;
+      const dateParam = (validatedData.date === null || validatedData.date === MAX_DATE) 
+        ? undefined 
+        : validatedData.date;
 
-        const rateResponse = await getConversionRate(
+      const rateResponse = await getConversionRate(
         validatedData.fromCurrency,
         validatedData.toCurrency,
-        dateParam 
-        );
+        dateParam
+      );
 
-      const targetRate = rateResponse.data[validatedData.toCurrency];
+      const targetRate = rateResponse.data[validatedData.toCurrency].value;
+      console.log('Target Rate:', targetRate);
 
       if (targetRate === undefined) {
-        throw new Error('The conversion rate could not be found');
+        throw new Error('Could not find the conversion rate.');
       }
       
       const resultValue = validatedData.amount * targetRate;
@@ -127,16 +126,13 @@ export const useCurrencyConverter = () => {
     }
   };
 
-  
   return {
-    // States
     formData,
     availableCurrencies,
     conversionResult,
     isLoading,
     generalError,
     validationErrors,
-    // Functions
     handleChange,
     handleSwap,
     handleConversion,

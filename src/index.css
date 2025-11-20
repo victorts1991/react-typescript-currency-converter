@@ -1,34 +1,24 @@
-/* src/index.css (Estilos Globais) */
-
-/* 1. Reset Básico e Altura Total */
 html, body, #root {
-  /* Garante que ocupam 100% da altura da viewport para a centralização */
   min-height: 100vh; 
   width: 100%;
   margin: 0;
   padding: 0;
 }
 
-/* 2. Estilo do Body e Fundo Global */
 body {
   font-family: Arial, sans-serif;
-  /* Cor de fundo suave */
   background-color: #f0f2f5; 
 }
 
-/* 3. CENTRALIZAÇÃO (Aplicada ao #root) */
 #root {
   display: flex;
-  justify-content: center; /* Centraliza Horizontalmente */
-  align-items: center;     /* Centraliza Verticalmente */
-  /* Remove a margem extra do div#root no Mobile que o Vite pode adicionar */
+  justify-content: center;
+  align-items: center;
   min-width: unset; 
 }
 
-/* Regras de Tipografia e Temas (Mantidas do seu index.css original para consistência) */
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  /* ... outras regras ... */
 }

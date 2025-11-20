@@ -8,7 +8,7 @@ function App() {
 
   return (
     <AppContainer>
-      <h2>Conversor de Moedas</h2>
+      <h2>Currency Converter</h2>
       <ConverterForm {...viewModel} />
     </AppContainer>
   );

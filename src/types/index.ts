@@ -1,7 +1,11 @@
 export interface Currency {
   id: string; 
   name: string; 
-  symbol: string;
+  code: string;
+}
+
+export interface ConversionRateValue {
+  value: number;
 }
 
 export interface CurrenciesResponse {
@@ -12,7 +16,7 @@ export interface CurrenciesResponse {
 
 export interface RateResponse {
   data: {
-    [targetCurrency: string]: number; 
+    [targetCurrency: string]: ConversionRateValue;
   };
 }
 
