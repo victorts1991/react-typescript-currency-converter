@@ -113,4 +113,3 @@ To enable the pipeline to connect to the external API (Currencyapi) and Vercel f
 | **`VERCEL_TOKEN`** | Personal Access Token (PAT) for Vercel authentication. | Token obtained from Vercel (Settings -> Tokens). |
 | **`VERCEL_ORG_ID`** | ID of the Vercel organization/user. | ID found in Vercel Dashboard (Settings). |
 | **`VERCEL_PROJECT_ID`** | ID of the project registered on Vercel. | ID found in Vercel Dashboard (Settings). |
-
