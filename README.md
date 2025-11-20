@@ -70,7 +70,7 @@ The project uses a GitHub Actions workflow to automate the testing, build, and p
 ### Pipeline Flow (`test-build-deploy` Job):
 
 1. **`Checkout code`**: Retrieves the repository source code.
-2. **`Setup Node.js`**: Configures the Node.js environment (v18) and uses caching for `npm` dependencies.
+2. **`Setup Node.js`**: Configures the Node.js environment (v20) and uses caching for `npm` dependencies.
 3. **`Install dependencies`**: Installs all project dependencies using `npm ci`.
 4. **`Check coverage threshold`**: **Executes the tests** and checks if the code coverage for the logic in the `src/hooks` directory meets the minimum required threshold of **80%**. The build fails if the coverage is below this value.
 5. **`Create .env file`**: Creates a temporary `.env` file for the build, injecting the necessary **API keys** and **base URL** using **GitHub Secrets**.

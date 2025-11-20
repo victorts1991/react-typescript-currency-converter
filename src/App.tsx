@@ -1,4 +1,3 @@
-import React from 'react';
 import { useCurrencyConverter } from './hooks/useCurrencyConverter';
 import ConverterForm from './components/ConverterForm';
 import { AppContainer } from './components/SharedStyles';
