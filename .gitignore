@@ -25,3 +25,5 @@ Thumbs.db
 .idea
 *.sublime-project
 *.sublime-workspace
+
+coverage

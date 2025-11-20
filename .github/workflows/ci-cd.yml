@@ -1,0 +1,44 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  test-build-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Check coverage threshold
+        run: |
+          echo "Checking minimum coverage of 80% in the dough src/hooks..."
+          npm run test:coverage:check
+      
+      - name: Create .env file
+        run: |
+          echo "VITE_CURRENCYAPI_KEY=${{ secrets.VITE_CURRENCYAPI_KEY }}" >> .env
+          echo "VITE_CURRENCYAPI_BASE_URL=${{ secrets.VITE_CURRENCYAPI_BASE_URL }}" >> .env
+      
+      - name: Build application
+        run: npm run build
+      
+      - name: Deploy to Vercel
+        uses: amondnet/vercel-action@v20
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          vercel-args: '--prod'
+          working-directory: ./
