@@ -2,6 +2,9 @@
 
 This project implements a single-page currency converter, fulfilling the technical requirements of the code challenge.
 
+**Application Link:** [https://react-typescript-currency-converter.vercel.app/](https://react-typescript-currency-converter.vercel.app/)
+> **Note:** This is a hobby project deployed via personal account credentials. The link may become inactive or change in the future.
+
 ---
 
 ## 🏛️ MVVM Architecture (Model-View-ViewModel)
@@ -33,22 +36,22 @@ The converter relies on the free **Currencyapi** service to fetch currency rates
 1. Create a file named **`.env`** in the project root directory (next to `package.json`).
 2. Add the following environment variables, replacing `<YOUR_API_KEY>` with your actual key:
 
-&&&bash
+```bash
 VITE_CURRENCYAPI_KEY="<YOUR_API_KEY>"
 VITE_CURRENCYAPI_BASE_URL="[https://api.currencyapi.com/v3](https://api.currencyapi.com/v3)"
-&&&
+```
 
 ### 2. Installation and Running
 
 After configuring the `.env` file, follow these steps to run the application locally:
 
-&&&bash
+```bash
 # 1. Install project dependencies
 npm install
 
 # 2. Start the development server (application will be available at http://localhost:5173)
 npm run dev
-&&&
+```
 
 ---
 
@@ -56,10 +59,10 @@ npm run dev
 
 The project includes a complete suite of unit and integration tests for the business logic (ViewModel), ensuring correct calculation, state handling, and form validation.
 
-&&&bash
+```bash
 # Executes all unit and integration tests
 npm run test
-&&&
+```
 
 ---
 
