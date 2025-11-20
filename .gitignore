@@ -27,3 +27,4 @@ Thumbs.db
 *.sublime-workspace
 
 coverage
+.vercel
