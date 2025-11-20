@@ -114,5 +114,3 @@ To enable the pipeline to connect to the external API (Currencyapi) and Vercel f
 | **`VERCEL_ORG_ID`** | ID of the Vercel organization/user. | ID found in Vercel Dashboard (Settings). |
 | **`VERCEL_PROJECT_ID`** | ID of the project registered on Vercel. | ID found in Vercel Dashboard (Settings). |
 
-> **Note:** The `VITE_` prefix is essential for environment variables to be exposed in a Vite application's client-side build. Using **Secrets** ensures that your tokens and IDs are not exposed in the source code or build logs.
-```
