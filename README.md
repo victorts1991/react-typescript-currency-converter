@@ -1,12 +1,5 @@
 # 🚀 Currency Converter Challenge (React + TypeScript)
 
-This project implements a single-page currency converter, fulfilling the technical requirements of the code challenge.
-
-**Application Link:** [https://react-typescript-currency-converter.vercel.app/](https://react-typescript-currency-converter.vercel.app/)
-> **Note:** This is a hobby project deployed via personal account credentials. The link may become inactive or change in the future.
-
----
-
 ## 🏛️ MVVM Architecture (Model-View-ViewModel)
 
 The application follows the **MVVM** pattern to ensure **separation of concerns** and **high testability**. The layers are structured as follows:
